@@ -18,8 +18,8 @@ matrix:
 
 # https://sipb.mit.edu/doc/safe-shell/
 
-#script:
-#- set -o pipefail
+script:
+- set -o pipefail
 - xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy 
 #CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
 
