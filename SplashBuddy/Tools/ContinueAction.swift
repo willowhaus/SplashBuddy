@@ -61,6 +61,34 @@ struct ContinueButton {
         }
         
         var localizedSuccessStatus: String {
+            
+            if Preferences.sharedInstance.autoContinueAction {
+                switch self {
+                case .Restart: return NSLocalizedString(
+                    "All applications were installed. Your Mac will Restart.",
+                    comment: "Everything was ok. Mac will automatically restart")
+                    
+                case .Shutdown: return NSLocalizedString(
+                    "All applications were installed. Your Mac will Shutdown.",
+                    comment: "Everything was ok. Mac will automatically shutdown")
+                    
+                case .Logout: return NSLocalizedString(
+                    "All applications were installed. Your Mac will log out.",
+                    comment: "Everything was ok. Mac will automatically Logout")
+                    
+                case .Quit:
+                    fallthrough
+                    
+                case .Hidden:
+                    fallthrough
+                    
+                default:
+                    return NSLocalizedString(
+                    "All applications were installed. Welcome to your new Mac.",
+                    comment: "Everything was ok. ")
+                    
+                }
+            } else {
             switch self {
             case .Restart: return NSLocalizedString(
                 "All applications were installed. Please click on Restart.",
@@ -86,6 +114,7 @@ struct ContinueButton {
                 "All applications were installed. Please click on Continue.",
                 comment: "Everything was ok. Asking user to click on the button")
                 
+            }
             }
         }
         

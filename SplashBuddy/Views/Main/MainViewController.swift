@@ -99,7 +99,13 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Display the html file
        if let html = Preferences.sharedInstance.html {
             DispatchQueue.main.async {
-                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
+                if Preferences.sharedInstance.continueAction.isHidden {
+                    self.continueButton.isHidden = true
+                } else if Preferences.sharedInstance.autoContinueAction {
+                    self.continueButton.isHidden = true
+                } else {
+                    self.continueButton.isHidden = false
+                }
             }
             
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2]
+
+### Added
+
+* Key `autoContinueAction` to automatically trigger `continueAction`, after 5 seconds, when all software are done installing. Button will also hidden.
+
 ## [1.1]
 
 ### Added

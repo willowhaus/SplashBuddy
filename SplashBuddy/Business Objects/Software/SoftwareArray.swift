@@ -86,7 +86,9 @@ class SoftwareArray: NSObject {
         return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
     }
     
+    /// Returns true if all software is either successful or failed
     internal func allDone(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
+    func allDone(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
         let displayedSoftwareArray = _array.filter({ $0.displayToUser == true })
         return displayedSoftwareArray.filter({ $0.status == .success || $0.status == .failed }).count == displayedSoftwareArray.count
     }
@@ -101,12 +103,11 @@ class SoftwareArray: NSObject {
         
         if self.allDone() {
             
-            NotificationCenter.default.post(name: SoftwareArray.StateNotification.DoneInstalling.notification, object: nil)
-            
             if self.failedSoftwareArray().count == 0 {
                 NotificationCenter.default.post(name: SoftwareArray.StateNotification.AllSuccess.notification, object: nil)
-                return
             }
+            
+            NotificationCenter.default.post(name: SoftwareArray.StateNotification.DoneInstalling.notification, object: nil)
         }
         
         if self.failedSoftwareArray().count > 0 {

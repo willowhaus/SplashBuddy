@@ -118,6 +118,13 @@ class Preferences {
         }
     }
     
+    // Automatically trigger the action when things are done (eg. Logout)
+    public var autoContinueAction: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "autoContinueAction")
+        }
+    }
+    
     //-----------------------------------------------------------------------------------
     // MARK: - HTML Path
     //-----------------------------------------------------------------------------------

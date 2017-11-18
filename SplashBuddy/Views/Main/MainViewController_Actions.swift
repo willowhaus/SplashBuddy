@@ -56,12 +56,25 @@ extension MainViewController {
     @objc func doneInstalling() {
         indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
+        
+        if Preferences.sharedInstance.autoContinueAction {
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+                DispatchQueue.main.async {
+                    self.pressedContinueButton(self)
+                }
+            })
+            
+        }
+        
     }
     
     /// all software is sucessfully installed
     @objc func allSuccess() {
-        statusLabel.textColor = .labelColor
-        statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
+        DispatchQueue.main.async {
+            self.statusLabel.textColor = .labelColor
+            self.statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
+        }
+
     }
     
 
