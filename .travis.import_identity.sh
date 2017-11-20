@@ -17,5 +17,7 @@ security set-keychain-settings -t 3600 -u $KEY_CHAIN
 # Add certificates to keychain and allow codesign to access them
 security import Assets/Mac-Developer-20180109.p12 -k $KEY_CHAIN -P $KEY_PASSWORD -T /usr/bin/codesign
 
+security set-key-partition-list -S apple-tool:,apple: -s -k travis $KEY_CHAIN
+
 echo "Add keychain to keychain-list"
 security list-keychains -s ios-build.keychain
