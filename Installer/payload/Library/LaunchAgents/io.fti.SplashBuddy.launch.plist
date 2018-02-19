@@ -6,6 +6,8 @@
     <integer>10</integer>
     <key>RunAtLoad</key>
     <true/>
+    <key>LaunchOnlyOnce</key>
+    <true/>
     <key>Label</key>
     <string>io.fti.SplashBuddy.launch</string>
     <key>ProgramArguments</key>
